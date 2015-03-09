@@ -1,0 +1,27 @@
+<div class="heading clearfix">
+  <h2>Settings</h2>
+</div>
+
+<div class="profile-edit-form">
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="icon">
+        <i class="octicon octicon-mention"></i>
+      </div>
+
+      <h3>Contact Information</h3>
+
+      <div class="input string">
+        <input type="email" placeholder="Email" required ng-model="user.email">
+      </div>
+
+      <div class="input string">
+        <input type="password" placeholder="Confirm With Your Current Password" ng-model="user.passwordCurrent" required>
+      </div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>

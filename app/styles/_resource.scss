@@ -1,0 +1,127 @@
+.resource-box {
+  display: block;
+  position: relative;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+
+  .icon {
+    width: 35px;
+    float: left;
+    text-align: center;
+
+    .octicon {
+      margin-top: 3px;
+      font-size: 35px;
+    }
+
+    a:hover {
+      color: #111;
+    }
+  }
+
+  .heading {
+    margin: 0 124px 0 55px;
+
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+
+      .address {
+        margin-left: 10px;
+        font-weight: 500;
+      }
+
+      a:hover {
+        color: #111;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .action {
+    width: 124px;
+    float: right;
+    text-align: right;
+  }
+
+  .info {
+    margin: 0 124px 0 55px;
+    font-size: 11px;
+    line-height: 20px;
+    color: #555;
+
+    > span:not(:first-child) {
+      &:before {
+        content: '-';
+        margin: 0 5px;
+      }
+    }
+
+    .label {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 0 6px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      line-height: 16px;
+      color: #333;
+      font-weight: normal;
+      font-size: 11px;
+      border-radius: 0;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .markdown {
+    margin: 0 124px 0 55px;
+
+    > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+  }
+
+  &.user {
+    h3 {
+      .email {
+        margin-left: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.ride {
+    h3 {
+      .username {
+        margin-left: 4px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.comment {
+    h3 {
+      .created-at {
+        margin-left: 4px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+a.resource-box {
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+}

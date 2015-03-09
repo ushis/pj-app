@@ -1,0 +1,45 @@
+// Heading declarations
+
+.heading {
+  margin-bottom: 20px;
+
+  h1,
+  h2 {
+    float: left;
+    line-height: 28px;
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .nav {
+    float: right;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    a {
+      float: left;
+      display: block;
+      padding: 0 10px;
+      font-size: 12px;
+      line-height: 26px;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+      &:first-child {
+        border-left: 0 none transparent;
+      }
+
+      &.active,
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+}

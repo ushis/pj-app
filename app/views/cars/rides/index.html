@@ -1,0 +1,80 @@
+<div class="heading clearfix">
+  <h2>Rides</h2>
+
+  <div class="nav">
+    <a ui-sref="app.car.ride-new">Add Ride</a>
+  </div>
+</div>
+
+<div class="heading clearfix">
+  <div class="search">
+    <div class="dropdown input datetime">
+      <i class="octicon octicon-x" ng-class="{inactive: !meta.after}" ng-click="clearAfter()"></i>
+
+      <a class="dropdown-toggle ride-after-tggl" data-toggle="dropdown">
+        <div
+          ng-bind="(meta.after | date: 'd MMM yyyy') || 'From'"
+          ng-class="{inactive: !meta.after}">
+        </div>
+      </a>
+
+      <ul class="dropdown-menu">
+        <datetimepicker
+          ng-model="meta.after"
+          on-set-time="reload()"
+          datetimepicker-config="{minView: 'day', dropdownSelector: '.ride-after-tggl'}">
+        </datetimepicker>
+      </ul>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="dropdown input datetime">
+      <i class="octicon octicon-x" ng-class="{inactive: !meta.before}" ng-click="clearBefore()"></i>
+
+      <a class="dropdown-toggle ride-before-tggl" data-toggle="dropdown">
+        <div
+          ng-bind="(meta.before | date: 'd MMM yyyy') || 'To'"
+          ng-class="{inactive: !meta.before}">
+        </div>
+      </a>
+
+      <ul class="dropdown-menu">
+        <datetimepicker
+          ng-model="meta.before"
+          on-set-time="reload()"
+          datetimepicker-config="{minView: 'day', dropdownSelector: '.ride-before-tggl'}">
+        </datetimepicker>
+      </ul>
+    </div>
+  </div>
+
+  <pagination counters="meta" click="reload()"></pagination>
+</div>
+
+<div>
+  <a ng-repeat="ride in rides" ui-sref="app.car.ride.comments({rideId: ride.id})" class="resource-box ride">
+    <div class="icon">
+      <i class="octicon octicon-milestone"></i>
+    </div>
+
+    <div class="heading">
+      <h3>
+        <span ng-bind="ride.distance"></span> km
+
+        <span class="username" ng-if="ride.user">
+          by <span ng-bind="ride.user.username"></span>
+        </span>
+      </h3>
+    </div>
+
+    <div class="info">
+      <span ng-bind="ride.startedAt | date: 'd MMM yyyy @ HH:mm'"></span>
+      <span ng-bind="ride.endedAt | date: 'd MMM yyyy @ HH:mm'"></span>
+    </div>
+  </a>
+</div>
+
+<div class="clearfix">
+  <pagination counters="meta" click="reload()"></pagination>
+</div>

@@ -1,0 +1,46 @@
+<div class="heading clearfix">
+  <h1>My Cars</h1>
+
+  <div class="nav">
+    <a ui-sref="app.car-new">Add Car</a>
+  </div>
+</div>
+
+<div class="heading clearfix">
+  <div class="search">
+    <input type="text" placeholder="Search" ng-input="reload()" ng-model="meta.q">
+  </div>
+
+  <pagination counters="meta" click="reload()"></pagination>
+</div>
+
+<div>
+  <a ng-repeat="car in cars"ui-sref="app.car.location({carId: car.id})" class="resource-box car">
+    <div class="icon">
+      <i class="octicon octicon-rocket"></i>
+    </div>
+
+    <div class="heading">
+      <h3 ng-bind="car.name"></h3>
+    </div>
+
+    <div class="info">
+      <span>
+        <span ng-bind="car.mileage"></span> km since
+        <span ng-bind="car.createdAt | date: 'd MMM yyyy'"></span>
+      </span>
+
+      <span>
+        <span ng-bind="car.ridesCount"></span> Rides
+      </span>
+
+      <span>
+        <span ng-bind="car.ownersCount + car.borrowersCount"></span> Drivers
+      </span>
+    </div>
+  </a>
+</div>
+
+<div class="clearfix">
+  <pagination counters="meta" click="reload()"></pagination>
+</div>

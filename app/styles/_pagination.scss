@@ -1,0 +1,56 @@
+// Pagination declarations
+
+.pagination {
+  float: right;
+  line-height: 25px;
+  margin: 0;
+
+  .pages {
+    font-weight: 600;
+
+    .sep {
+      margin: 0 2px;
+
+      &:after {
+        content: '/';
+      }
+    }
+  }
+
+  .prev,
+  .next {
+    display: inline-block;
+    width: 20px;
+
+    a {
+      display: block;
+
+      &:hover {
+        color: #111;
+      }
+    }
+
+    &.disabled {
+      a {
+        cursor: default;
+        color: rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+
+  .prev {
+    text-align: left;
+  }
+
+  .next {
+    text-align: right;
+  }
+
+  .octicon {
+    font-size: 16px;
+  }
+}

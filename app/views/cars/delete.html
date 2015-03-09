@@ -1,0 +1,25 @@
+<div class="heading clearfix">
+  <h2>Delete Car</h2>
+</div>
+
+<div class="car-delete-form">
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="icon">
+        <i class="octicon octicon-flame"></i>
+      </div>
+
+      <div class="heading">
+        <h3>Confirm Deletion</h3>
+      </div>
+
+      <div class="input string">
+        <input type="text" placeholder="Enter The Name Of The Car" ng-model="carName">
+      </div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-primary" ng-disabled="car.name !== carName">Delete</button>
+    </div>
+  </form>
+</div>

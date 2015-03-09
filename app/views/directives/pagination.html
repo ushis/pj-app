@@ -1,0 +1,19 @@
+<div class="pagination">
+  <span class="prev" ng-class="{disabled: counters.page <= 1}">
+    <a ng-click="prev()">
+      <i class="octicon octicon-chevron-left"></i>
+    </a>
+  </span>
+
+  <span class="pages">
+    <span class="current" ng-bind="counters.page"></span>
+    <span class="sep"></span>
+    <span class="total" ng-bind="counters.totalPages"></span>
+  </span>
+
+  <span class="next" ng-class="{disabled: counters.page >= counters.totalPages}">
+    <a ng-click="next()">
+      <i class="octicon octicon-chevron-right"></i>
+    </a>
+  </span>
+</div>

@@ -1,0 +1,28 @@
+<div class="heading clearfix">
+  <h1>My Profile</h1>
+
+  <div class="nav">
+    <a ui-sref="app.profile.edit" ui-sref-active="active">Settings</a>
+    <a ui-sref="app.profile.password" ui-sref-active="active">Password</a>
+    <a ui-sref="app.profile.delete" ui-sref-active="active">Delete</a>
+  </div>
+</div>
+
+<div class="resource-box user">
+  <div class="icon">
+    <i class="octicon octicon-person"></i>
+  </div>
+
+  <div class="heading">
+    <h3>
+      <span ng-bind="currentUser.username()" class="username"></span>
+      <span ng-bind="currentUser.email()" class="email"></span>
+    </h3>
+  </div>
+
+  <div class="info">
+    Registered on <span ng-bind="currentUser.createdAt() | date: 'd MMM yyyy'"></span>
+  </div>
+</div>
+
+<div class="sub-view" ui-view></div>

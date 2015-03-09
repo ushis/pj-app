@@ -1,0 +1,46 @@
+<div class="heading clearfix">
+  <h2>Guests</h2>
+
+  <div class="nav">
+    <a ui-sref="app.car.owners" ui-sref-active="active">Owners</a>
+    <a ui-sref="app.car.borrowers" ui-sref-active="active">Guests</a>
+    <a ui-sref="app.car.driver-new" ui-sref-active="active">Add Driver</a>
+  </div>
+</div>
+
+<div class="heading clearfix">
+  <div class="search">
+    <input type="text" placeholder="Search" ng-input="reload()" ng-model="meta.q">
+  </div>
+
+  <pagination counters="meta" click="reload()"></pagination>
+</div>
+
+<div>
+  <div ng-repeat="borrowership in borrowerships" class="resource-box borrowership">
+    <div class="icon">
+      <i class="octicon octicon-person"></i>
+    </div>
+
+    <div class="action" ng-if="car.currentUser.owner">
+      <a ng-confirm="delete(borrowership)" class="btn btn-secondary">
+        Drop
+      </a>
+    </div>
+
+    <div class="heading">
+      <h3>
+        <span ng-bind="borrowership.user.username"></span>
+      </h3>
+    </div>
+
+    <div class="info">
+      Guest Driver since
+      <span ng-bind="borrowership.createdAt | date: 'd MMM yyyy'"></span>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix">
+  <pagination counters="meta" click="reload()"></pagination>
+</div>

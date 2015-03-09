@@ -1,0 +1,23 @@
+<div class="heading clearfix">
+  <h2>Delete Account</h2>
+</div>
+
+<div class="profile-delete-form">
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="icon">
+        <i class="octicon octicon-flame"></i>
+      </div>
+
+      <h3>Confirm Deletion</h3>
+
+      <div class="input string">
+        <input type="password" placeholder="Confirm With Your Current Password" ng-model="user.passwordCurrent" required>
+      </div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </div>
+  </form>
+</div>

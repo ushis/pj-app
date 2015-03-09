@@ -1,0 +1,261 @@
+// Form declarations
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  outline: 0;
+
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &[disabled] {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+input[type="checkbox"] {
+  margin-right: 6px;
+
+  + span {
+    cursor: pointer;
+  }
+}
+
+textarea {
+  margin-top: 4px;
+  min-height: 60px;
+  resize: vertical;
+}
+
+form {
+  margin-bottom: 20px;
+
+  > div {
+    margin-bottom: 10px;
+  }
+}
+
+fieldset {
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+
+  .icon {
+    float: left;
+    width: 35px;
+    margin-top: 4px;
+    text-align: center;
+
+    .octicon {
+      font-size: 35px;
+    }
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px 55px;
+  }
+
+  .input {
+    margin-left: 55px;
+
+    &.string {
+      margin-bottom: 14px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &.checkbox {
+      padding-left: 1px;
+      margin-bottom: 6px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    border:  1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+  }
+
+  .select {
+    position: relative;
+
+    > div {
+      position: relative;
+    }
+
+    .btn.btn-default {
+      position: relative;
+      width: 100%;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: normal;
+      line-height: normal;
+      background-color: transparent;
+      border-radius: 3px;
+      box-sizing: border-box;
+      text-align: left;
+      box-shadow: none;
+
+      &:hover {
+        border-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .text-muted {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      .caret {
+        position: absolute;
+        border: 4px solid transparent;
+        border-top-color: #333;
+      }
+    }
+
+    .btn-default-focus {
+      outline: 0;
+      box-shadow: none;
+      background-color: #fff;
+    }
+
+    .form-control {
+      font-size: 13px;
+      height: auto;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .ui-select-match {
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    .ui-select-choices {
+      display: none;
+      position: absolute;
+      margin-top: 1px;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-top: 0 none transparent;
+      border-radius: 0 0 3px 3px;
+      box-sizing: border-box;
+      z-index: 9999;
+
+      .ui-select-choices-row {
+        > a {
+          padding: 3px 10px;
+          font-size: 13px;
+
+          .text-muted {
+            color: rgba(0, 0, 0, 0.3);
+          }
+        }
+
+        &.active {
+          > a {
+            color: #333;
+            background-color: rgba(0, 0,0, 0.05);
+          }
+        }
+      }
+    }
+
+    &.open,
+    .open {
+      .ui-select-choices {
+        display: block;
+      }
+    }
+  }
+
+}
+
+.submit {
+  a {
+    margin-left: 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.search {
+  float: left;
+
+  input,
+  .input {
+    margin-right: 10px;
+    display: inline-block;
+    float: left;
+    width: 200px;
+    padding: 3px 10px;
+    line-height: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &.input {
+      width: 120px;
+    }
+
+    .inactive {
+      color: rgba(0, 0, 0, 0.3);
+    }
+
+    .octicon {
+      float: right;
+      cursor: pointer;
+
+      &.inactive {
+        visibility: hidden;
+      }
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .sep {
+    float: left;
+
+    &:before {
+      content: '-';
+      margin-right: 10px;
+    }
+  }
+}
+
+.datetimepicker {
+  table {
+    tr {
+      .active {
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        background-image: none !important;
+      }
+    }
+  }
+}

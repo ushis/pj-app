@@ -1,0 +1,38 @@
+// Button declarations
+
+.btn {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  outline: 0;
+
+  &.btn-primary {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 1);
+    }
+  }
+
+  &.btn-secondary {
+    font-size: 11px;
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.01);
+
+    &:hover {
+      background-color: rgba(0,0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &[disabled],
+  &.disabled {
+    opacity: 0.1;
+    cursor: default;
+  }
+}

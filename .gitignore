@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+bower_components
+
+# Temporary files
+.tmp
+.sass-cache
+
+# Compiled sources
+dist
+
+# Editor
+*.swo
+*.swp

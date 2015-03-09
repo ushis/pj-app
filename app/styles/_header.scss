@@ -1,0 +1,55 @@
+// Header declarations
+
+#header {
+  .icon {
+    float: left;
+    font-size: 24px;
+    margin-right: 26px;
+
+    .octicon {
+      font-size: 26px;
+      margin-top: -2px;
+    }
+  }
+
+  .linkset {
+    float: left;
+
+    a {
+      &.active {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .user-nav {
+    float: right;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    a {
+      display: block;
+      float: left;
+      padding: 0 10px;
+      font-size: 11px;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+      &:first-child {
+        border-left: 0 none transparent;
+      }
+
+      &.active,
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.username {
+        font-weight: 600;
+      }
+    }
+  }
+}

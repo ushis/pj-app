@@ -1,0 +1,22 @@
+<div id="header" class="clearfix">
+  <div class="icon">
+    <i class="octicon octicon-radio-tower"></i>
+  </div>
+
+  <div class="linkset" ng-if="currentUser.isSignedIn()">
+    <a ui-sref="app.cars" ui-sref-active="active">All Cars</a>
+  </div>
+
+  <div class="user-nav">
+    <div ng-if="currentUser.isSignedIn()">
+      <a ui-sref="app.profile.edit" ng-bind="currentUser.email()" class="username"></a>
+      <a ng-click="signOut()">Sign Out</a>
+    </div>
+
+    <div ng-if="!currentUser.isSignedIn()">
+      <a ui-sref="app.signin">Sign In</a>
+    </div>
+  </div>
+</div>
+
+<div id="content" ui-view></div>

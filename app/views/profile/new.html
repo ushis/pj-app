@@ -1,0 +1,40 @@
+<div class="heading clearfix">
+  <h1>Sign Up</h1>
+
+  <div class="nav">
+    <a ui-sref="app.signin" ui-sref-active="active">Sign In</a>
+    <a ui-sref="app.signup" ui-sref-active="active">Create Account</a>
+  </div>
+</div>
+
+<div class="signup-form">
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="icon">
+        <i class="octicon octicon-mention"></i>
+      </div>
+
+      <h3>Enter Your Information</h3>
+
+      <div class="input string">
+        <input type="text" placeholder="Username" required ng-model="user.username">
+      </div>
+
+      <div class="input string">
+        <input type="email" placeholder="Email" required ng-model="user.email">
+      </div>
+
+      <div class="input string">
+        <input type="password" placeholder="Password" required ng-model="user.password">
+      </div>
+
+      <div class="input string">
+        <input type="password" placeholder="Repeat Your Password" required ng-model="user.passwordConfirmation">
+      </div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+  </form>
+</div>
