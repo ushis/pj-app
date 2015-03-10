@@ -12,8 +12,8 @@ angular
         resolve: {
           reservations: function(_, Reservation, $stateParams) {
             var params = _.extend({
-              after: moment().startOf('month').format('YYYY-MM-DD'),
-              before: moment().endOf('month').add(1, 'day').format('YYYY-MM-DD'),
+              after: moment().startOf('month').format(),
+              before: moment().endOf('month').format(),
               perPage: 100
             }, $stateParams);
 

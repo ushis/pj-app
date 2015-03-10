@@ -19,8 +19,8 @@ angular
 
     $scope.reload = function() {
       var params = _.clone($scope.meta);
-      params.before = (params.before) ? moment(params.before).format('YYYY-MM-DD') : null;
-      params.after = (params.after) ? moment(params.after).format('YYYY-MM-DD') : null;
+      params.after = (params.after) ? moment(params.after).startOf('day').format() : null;
+      params.before = (params.before) ? moment(params.before).endOf('day').format() : null;
       params.carId = $scope.car.id;
 
       Ride.query(params).$promise
