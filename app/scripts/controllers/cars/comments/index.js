@@ -20,6 +20,7 @@ angular
       CarComment.save(params, {comment: data}).$promise
         .then(function(resp) {
           $scope.comment.comment = null;
+          $scope.reloadCar();
           $scope.reload();
         })
         .catch(function(err) {
