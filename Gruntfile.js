@@ -17,6 +17,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
+    module: require('./bower.json').moduleName || 'app',
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
@@ -44,6 +45,13 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      html: {
+        files: ['<%= yeoman.app %>/**/*.html'],
+        tasks: ['ngtemplates'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
@@ -56,7 +64,6 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/**/*.html',
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -308,6 +315,27 @@ module.exports = function (grunt) {
       }
     },
 
+    ngtemplates: {
+      app: {
+        cwd: '<%= yeoman.app %>',
+        src: 'views/**/*.html',
+        dest: '.tmp/scripts/templates.js',
+        options: {
+          module: '<%= yeoman.module %>',
+          htmlmin: {
+            collapseBooleanAttributes: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: false,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: false,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+          }
+        }
+      }
+    },
+
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -394,6 +422,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'ngconstant:server',
+      'ngtemplates',
       'copy:server',
       'concurrent:server',
       'autoprefixer:server',
@@ -411,6 +440,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep',
     'ngconstant:dist',
+    'ngtemplates',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
