@@ -1,5 +1,5 @@
 <div class="calendar">
-  <div class="title">
+  <div class="title clearfix">
     <a ng-click="calendar.prevMonth()">
       <span class="octicon octicon-arrow-left"></span>
     </a>
@@ -27,7 +27,7 @@
         <table ng-repeat="week in calendar.weeks">
           <thead>
             <tr>
-              <th ng-repeat="day in week.days" ng-class="{inactive: !calendar.inMonth(day)}">
+              <th ng-repeat="day in week.days" ng-class="{inactive: !calendar.inMonth(day), today: calendar.isToday(day)}">
                 <span ng-bind="day.date()"></span>
               </th>
             </tr>

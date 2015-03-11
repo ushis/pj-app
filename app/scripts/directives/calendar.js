@@ -83,6 +83,10 @@ angular
       return moment.month() === this.moment.month();
     };
 
+    Calendar.prototype.isToday = function(day) {
+      return moment().startOf('day').isSame(day);
+    };
+
     return {
       restrict: 'E',
       scope: {

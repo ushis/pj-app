@@ -2,12 +2,28 @@
   width: 100%;
 
   .title {
+    float: left;
+    margin-bottom: 10px;
     text-align: center;
-    margin-bottom: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+
+    a {
+      display: block;
+      float: left;
+      padding: 0 6px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+      }
+    }
 
     .date {
-      display: inline-block;
+      display: block;
+      float: left;
       width: 140px;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -45,10 +61,14 @@
         color: rgba(0, 0, 0, 0.3);
       }
 
+      &.today {
+        font-weight: 600;
+      }
+
       a {
         display: block;
         padding: 0 6px;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.06);
         border-radius: 3px;
       }
     }
