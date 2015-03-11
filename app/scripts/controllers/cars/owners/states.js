@@ -12,7 +12,7 @@ angular
         resolve: {
           ownerships: function(_, Ownership, $stateParams) {
             var params = _.extend({
-              orderBy: 'created_at'
+              orderBy: 'user.username'
             }, $stateParams);
 
             return Ownership.query(params).$promise;

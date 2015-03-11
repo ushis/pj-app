@@ -12,7 +12,7 @@ angular
         resolve: {
           borrowerships: function(_, Borrowership, $stateParams) {
             var params = _.extend({
-              orderBy: 'created_at'
+              orderBy: 'user.username'
             }, $stateParams);
 
             return Borrowership.query(params).$promise;
