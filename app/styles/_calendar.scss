@@ -1,0 +1,61 @@
+.calendar {
+  width: 100%;
+
+  .title {
+    text-align: center;
+    margin-bottom: 6px;
+
+    .date {
+      display: inline-block;
+      width: 140px;
+    }
+  }
+
+  table {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 0 none transparent;
+
+    &:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+      width: 14.2857%;
+      padding: 4px 8px;
+      font-weight: normal;
+      box-sizing: border-box;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+      &:first-child {
+        border-left: 0 none transparent;
+      }
+
+      &.inactive {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      a {
+        display: block;
+        padding: 0 6px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+    }
+
+    th {
+      text-align: right;
+    }
+  }
+
+  .head {
+    margin-bottom: 10px;
+
+    table {
+      th {
+        text-align: center;
+      }
+    }
+  }
+}

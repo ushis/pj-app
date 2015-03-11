@@ -1,0 +1,49 @@
+<div class="calendar">
+  <div class="title">
+    <a ng-click="calendar.prevMonth()">
+      <span class="octicon octicon-arrow-left"></span>
+    </a>
+
+    <span class="date" ng-bind="calendar.moment.format('MMM YYYY')"></span>
+
+    <a ng-click="calendar.nextMonth()">
+      <span class="octicon octicon-arrow-right"></span>
+    </a>
+  </div>
+
+  <div class="grid">
+    <div class="head">
+      <table>
+        <thead>
+          <tr>
+            <th ng-repeat="day in calendar.weekDays" ng-bind="day.format('ddd')"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="body">
+        <table ng-repeat="week in calendar.weeks">
+          <thead>
+            <tr>
+              <th ng-repeat="day in week.days" ng-bind="day.date()" ng-class="{inactive: !calendar.inMonth(day)}">
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in itemsInWeek(week)">
+              <td ng-repeat="_ in week.daysBefore(item.startsAt)"></td>
+
+              <td ng-attr-colspan="{{week.daysBetween(item.startsAt, item.endsAt).length}}">
+                <a
+                  ng-click="onItemClick(item)"
+                  ng-attr-title="{{item.startsAt.format('D MMM YYYY, HH:mm') + ' - ' + item.endsAt.format('D MMM YYYY, HH:mm')}}"
+                  ng-bind="item.title">
+                </a>
+              </td>
+
+              <td ng-repeat="_ in week.daysAfter(item.endsAt)"></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

@@ -34,7 +34,7 @@ angular
       };
 
       if (_.trim($scope.comment.comment).length === 0) {
-        return $q.resolve(true);
+        return $q.when(true);
       }
       return ReservationComment.save(params, {comment: $scope.comment}).$promise;
     };

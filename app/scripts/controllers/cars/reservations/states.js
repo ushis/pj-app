@@ -14,6 +14,7 @@ angular
             var params = _.extend({
               after: moment().startOf('month').format(),
               before: moment().endOf('month').format(),
+              orderBy: 'starts_at',
               perPage: 100
             }, $stateParams);
 
