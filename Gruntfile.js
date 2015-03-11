@@ -272,7 +272,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', 'views/**/*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -296,12 +296,12 @@ module.exports = function (grunt) {
         name: 'config',
         dest: '.tmp/scripts/config.js'
       },
-      development: {
+      server: {
         constants: {
           ENV: require('./config.json').development
         }
       },
-      production: {
+      dist: {
         constants: {
           ENV: require('./config.json').production
         }
@@ -319,7 +319,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '*.html',
-            'views/{,*/}*.html',
+            'views/**/*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]
@@ -330,9 +330,37 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
+          cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/',
+          src: './*',
+          dest: '<%= yeoman.dist %>/styles/fonts'
+        }, {
+          expand: 'true',
+          cwd: 'bower_components/octicons/octicons',
+          src: './octicons.{eot,svg,ttf,woff}',
+          dest: '<%= yeoman.dist %>/styles/fonts'
+        }, {
+          expand: 'true',
+          cwd: 'bower_components/open-sans/fonts',
+          src: './*/*',
+          dest: '<%= yeoman.dist %>/styles/fonts'
+        }]
+      },
+      server: {
+        files: [{
+          expand: 'true',
+          cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap',
+          src: './*',
+          dest: '.tmp/styles/fonts'
+        }, {
+          expand: 'true',
+          cwd: 'bower_components/octicons/octicons',
+          src: './octicons.{eot,svg,ttf,woff}',
+          dest: '.tmp/styles/fonts'
+        }, {
+          expand: 'true',
+          cwd: 'bower_components/open-sans/fonts',
+          src: './*/*',
+          dest: '.tmp/styles/fonts'
         }]
       },
       styles: {
@@ -365,7 +393,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'ngconstant:development',
+      'ngconstant:server',
+      'copy:server',
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
@@ -381,7 +410,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'ngconstant:production',
+    'ngconstant:dist',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
