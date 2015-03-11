@@ -15,9 +15,18 @@
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: 0 none transparent;
+    border-spacing: 0;
+    border-collapse: separate;
 
     &:first-child {
       border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
     }
 
     th,

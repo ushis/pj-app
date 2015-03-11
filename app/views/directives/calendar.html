@@ -16,7 +16,9 @@
       <table>
         <thead>
           <tr>
-            <th ng-repeat="day in calendar.weekDays" ng-bind="day.format('ddd')"></th>
+            <th ng-repeat="day in calendar.weekDays">
+              <span ng-bind="day.format('ddd')"></span>
+            </th>
           </tr>
         </thead>
       </table>
@@ -25,7 +27,9 @@
         <table ng-repeat="week in calendar.weeks">
           <thead>
             <tr>
-              <th ng-repeat="day in week.days" ng-bind="day.date()" ng-class="{inactive: !calendar.inMonth(day)}">
+              <th ng-repeat="day in week.days" ng-class="{inactive: !calendar.inMonth(day)}">
+                <span ng-bind="day.date()"></span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +39,7 @@
               <td ng-attr-colspan="{{week.daysBetween(item.startsAt, item.endsAt).length}}">
                 <a
                   ng-click="onItemClick(item)"
-                  ng-attr-title="{{item.startsAt.format('D MMM YYYY, HH:mm') + ' - ' + item.endsAt.format('D MMM YYYY, HH:mm')}}"
+                  ng-attr-title="{{itemTitle(item)}}"
                   ng-bind="item.title">
                 </a>
               </td>

@@ -35,8 +35,7 @@ angular
       end = end.clone().endOf('day');
 
       return this.days.filter(function(day) {
-        return (day.isAfter(start) || day.isSame(start)) &&
-          (day.isBefore(end) || day.isSame(end));
+        return !(day.isBefore(start) || day.isAfter(end));
       });
     };
 
@@ -97,6 +96,17 @@ angular
 
         scope.onItemClick = function(item) {
           scope.click({$item: item});
+        };
+
+        scope.itemTitle = function(item) {
+          var parts = [item.startsAt.format('D MMM YYYY, HH:mm')];
+
+          if (item.startsAt.clone().endOf('day').isBefore(item.endsAt)) {
+            parts.push(item.endsAt.format('D MMM YYYY, HH:mm'));
+          } else {
+            parts.push(item.endsAt.format('HH:mm'));
+          }
+          return parts.join(' - ');
         };
 
         scope.itemsInWeek = function(week) {
