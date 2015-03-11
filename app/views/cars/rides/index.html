@@ -79,6 +79,10 @@
   </a>
 </div>
 
+<div class="empty" ng-if="rides.length === 0">
+  <i class="octicon octicon-alert"></i> I couldn't find any rides.
+</div>
+
 <div class="clearfix">
   <pagination counters="meta" click="reload()"></pagination>
 </div>

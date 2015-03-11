@@ -41,6 +41,10 @@
   </div>
 </div>
 
+<div class="empty" ng-if="ownerships.length === 0">
+  <i class="octicon octicon-alert"></i> I couldn't find any owners.
+</div>
+
 <div class="clearfix">
   <pagination counters="meta" click="reload()"></pagination>
 </div>

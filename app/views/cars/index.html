@@ -41,6 +41,10 @@
   </a>
 </div>
 
+<div class="empty" ng-if="cars.length === 0">
+  <i class="octicon octicon-alert"></i> I couldn't find any cars.
+</div>
+
 <div class="clearfix">
   <pagination counters="meta" click="reload()"></pagination>
 </div>
