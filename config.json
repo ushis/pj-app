@@ -3,6 +3,6 @@
     "API": "http://localhost:3000/v1"
   },
   "production": {
-    "API": "http://localhost:3000/v1"
+    "API": "https://api.pj.honkgong.info/v1"
   }
 }
