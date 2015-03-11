@@ -16,4 +16,16 @@ angular
           console.log(err);
         });
     };
+
+    $scope.reloadRide = function() {
+      var params = {
+        carId: $scope.car.id,
+        rideId: $scope.ride.id
+      };
+
+      Ride.get(params).$promise
+        .then(function(resp) {
+          $scope.ride = resp.ride;
+        });
+    };
   });

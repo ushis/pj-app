@@ -44,11 +44,10 @@ angular
         .then(function(resp) {
           saveComment(resp.reservation.id)
             .finally(function() {
-              //$state.go('app.car.reservation', {
-              //  carId: $scope.car.id,
-              //  reservationId: resp.reservation.id
-              //});
-              $state.go('app.car.reservations', {carId: $scope.car.id});
+              $state.go('app.car.reservation.comments', {
+                carId: $scope.car.id,
+                reservationId: resp.reservation.id
+              });
             });
         })
         .catch(function(err) {

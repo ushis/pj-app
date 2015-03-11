@@ -2,8 +2,8 @@
 
 angular
   .module('pjApp')
-  .controller('CarsRidesCommentsIndexCtrl',
-    function($scope, comments, RideComment) {
+  .controller('CarsReservationsCommentsIndexCtrl',
+    function($scope, comments, ReservationComment) {
 
     $scope.comments = comments.comments;
 
@@ -14,15 +14,15 @@ angular
     $scope.submit = function() {
       var params = {
         carId: $scope.car.id,
-        rideId: $scope.ride.id
+        reservationId: $scope.reservation.id
       };
 
       var data = $scope.comment;
 
-      RideComment.save(params, {comment: data}).$promise
+      ReservationComment.save(params, {comment: data}).$promise
         .then(function(resp) {
           $scope.comment.comment = null;
-          $scope.reloadRide();
+          $scope.reloadReservation();
           $scope.reload();
         })
         .catch(function(err) {
@@ -33,10 +33,10 @@ angular
     $scope.reload = function() {
       var params = _.extend({
         carId: $scope.car.id,
-        rideId: $scope.ride.id
+        reservationId: $scope.reservation.id
       }, $scope.meta);
 
-      RideComment.query(params).$promise
+      ReservationComment.query(params).$promise
         .then(function(resp) {
           $scope.comments = resp.comments;
           $scope.meta = resp.meta;
@@ -45,4 +45,4 @@ angular
           console.log(err);
         });
     };
-  });
+    });

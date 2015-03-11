@@ -19,7 +19,7 @@ angular
     };
 
     $scope.goTo = function(item) {
-      $state.go('app.car.reservation', {
+      $state.go('app.car.reservation.comments', {
         carId: $scope.car.id,
         reservationId: item.id
       });
