@@ -2,7 +2,8 @@
 
 angular
   .module('pjApp')
-  .controller('ProfileNewCtrl', function($scope, $state, Profile) {
+  .controller('ProfileNewCtrl',
+    function(_, moment, $scope, $state, $window, Profile) {
 
     $scope.user = {
       username: null,
@@ -12,8 +13,13 @@ angular
     };
 
     $scope.submit = function() {
-      Profile.save({user: $scope.user}).$promise
+      var data = _.extend({
+        timeZone: moment().utcOffset() * 60
+      }, $scope.user);
+
+      Profile.save({user: data}).$promise
         .then(function(resp) {
+          $window.localStorage.setItem('user.username', resp.user.username);
           $state.go('app.signin');
         })
         .catch(function(err) {
