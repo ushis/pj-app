@@ -6,6 +6,8 @@ angular
 
     var timeZones = moment.tz.names();
 
+    $scope.success = false;
+
     $scope.timeZones = _.range(10).map(function(i) {
       return timeZones[i];
     });
@@ -19,7 +21,6 @@ angular
           res.push(timeZones[i]);
         }
       }
-
       $scope.timeZones = res;
     };
 
@@ -30,9 +31,11 @@ angular
     $scope.submit = function() {
       $scope.currentUser.update($scope.user)
         .then(function() {
+          $scope.success = true;
           _.extend($scope.user, $scope.currentUser.attrs);
         })
         .catch(function(err) {
+          $scope.success = false;
           console.log(err);
         })
         .finally(function() {

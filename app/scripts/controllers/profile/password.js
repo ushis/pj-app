@@ -4,6 +4,8 @@ angular
   .module('pjApp')
   .controller('ProfilePasswordCtrl', function(_, $scope) {
 
+    $scope.success = false;
+
     $scope.user = {
       password: null,
       passwordConfirmation: null,
@@ -13,9 +15,10 @@ angular
     $scope.submit = function() {
       $scope.currentUser.update($scope.user)
         .then(function() {
-          console.log('yay');
+          $scope.success = true;
         })
         .catch(function(err) {
+          $scope.success = false;
           console.log(err);
         })
         .finally(function() {

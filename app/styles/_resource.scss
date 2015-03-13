@@ -126,7 +126,8 @@ a.resource-box {
   }
 }
 
-.empty {
+.empty,
+.success {
   margin-bottom: 20px;
   padding: 16px 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -135,4 +136,8 @@ a.resource-box {
   .octicon {
     margin-right: 6px;
   }
+}
+
+.success {
+  padding: 10px;
 }
