@@ -1,7 +1,7 @@
 <div class="heading clearfix">
   <h2>Ride Info</h2>
 
-  <div class="nav" ng-if="car.CurrentUser.owner || currentUser.is(ride.user)">
+  <div class="nav" ng-if="car.currentUser.owner || currentUser.is(ride.user)">
     <a ui-sref="app.car.ride.comments" ui-sref-active="active">Discussion</a>
     <a ui-sref="app.car.ride.edit" ui-sref-active="active">Edit</a>
     <a ng-confirm="delete()" ng-confirm-message="Do You Really Want To Delete This Ride?">Delete</a>

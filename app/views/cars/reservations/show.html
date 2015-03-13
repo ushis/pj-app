@@ -1,7 +1,7 @@
 <div class="heading clearfix">
   <h2>Reservation Info</h2>
 
-  <div class="nav" ng-if="car.CurrentUser.owner || currentUser.is(reservation.user)">
+  <div class="nav" ng-if="car.currentUser.owner || currentUser.is(reservation.user)">
     <a ui-sref="app.car.reservation.comments" ui-sref-active="active">Discussion</a>
     <a ui-sref="app.car.reservation.edit" ui-sref-active="active">Edit</a>
     <a ng-confirm="delete()" ng-confirm-message="Do You Really Want To Delete This Reservation?">Delete</a>
