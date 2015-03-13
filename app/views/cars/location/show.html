@@ -14,7 +14,7 @@
   <div class="info">
     <span>
       Last update at
-      <span ng-bind="location.updatedAt | date: 'd MMM yyyy @ HH:mm'"></span>
+      <span ng-bind="location.updatedAt | date: 'd MMM yyyy, HH:mm'"></span>
       <span ng-if="location.user">
         by <span ng-bind="location.user.username"></span>
       </span>

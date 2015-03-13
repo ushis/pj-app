@@ -24,8 +24,8 @@
   </div>
 
   <div class="info">
-    <span ng-bind="ride.startedAt | date: 'd MMM yyyy @ HH:mm'"></span>
-    <span ng-bind="ride.endedAt | date: 'd MMM yyyy @ HH:mm'"></span>
+    <span ng-bind="ride.startedAt | date: 'd MMM yyyy, HH:mm'"></span>
+    <span ng-bind="ride.endedAt | date: 'd MMM yyyy, HH:mm'"></span>
     <span ng-if="ride.commentsCount > 0">
       <ng-pluralize count="ride.commentsCount" when="{1: '1 Comment', other: '{} Comments'}">
       </ng-pluralize>
