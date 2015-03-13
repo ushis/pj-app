@@ -5,10 +5,7 @@ angular
   .controller('CarsReservationsEditCtrl',
     function(_, moment, $scope, $state, Reservation) {
 
-    $scope.tmpReservation = _.extend({}, $scope.reservation, {
-      startsAt: moment($scope.reservation.startsAt),
-      endsAt: moment($scope.reservation.endsAt)
-    });
+    $scope.tmpReservation = _.clone($scope.reservation);
 
     $scope.submit = function() {
       var params = {

@@ -4,10 +4,7 @@ angular
   .module('pjApp')
   .controller('CarsRidesEditCtrl', function(_, moment, $scope, $state, Ride) {
 
-    $scope.tmpRide = _.extend({}, $scope.ride, {
-      startedAt: moment($scope.ride.startedAt),
-      endedAt: moment($scope.ride.endedAt)
-    });
+    $scope.tmpRide = _.clone($scope.ride);
 
     $scope.submit = function() {
       var params = {

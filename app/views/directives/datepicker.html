@@ -1,0 +1,15 @@
+<div class="dropdown datepicker">
+  <a class="dropdown-toggle" ng-class="id" data-toggle="dropdown">
+    <div class="output">
+     <span ng-bind="ngModel | date: 'd MMM yyyy, HH:mm'"></span>
+     <span class="placeholder" ng-if="!ngModel" ng-bind="placeholder"></span>
+   </div>
+  </a>
+
+  <ul class="dropdown-menu">
+    <datetimepicker
+      ng-model="ngModel"
+      datetimepicker-config="config">
+    </datetimepicker>
+  </ul>
+</div>
