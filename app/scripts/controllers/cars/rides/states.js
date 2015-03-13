@@ -26,7 +26,7 @@ angular
         controller: 'CarsRidesNewCtrl'
       })
       .state('app.car.ride', {
-        url: '/ride/:rideId',
+        url: '/rides/:rideId',
         abstract: true,
         templateUrl: 'views/cars/rides/show.html',
         controller: 'CarsRidesShowCtrl',
