@@ -19,5 +19,5 @@ angular
           dropdownSelector: '.' + $scope.id
         };
       }
-    }
+    };
   });
