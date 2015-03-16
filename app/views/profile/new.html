@@ -17,18 +17,22 @@
       <h3>Enter Your Information</h3>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.username"></span>
         <input type="text" placeholder="Username" required ng-model="user.username">
       </div>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.email"></span>
         <input type="email" placeholder="Email" required ng-model="user.email">
       </div>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.password"></span>
         <input type="password" placeholder="Password" required ng-model="user.password">
       </div>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.passwordConfirmation"></span>
         <input type="password" placeholder="Repeat Your Password" required ng-model="user.passwordConfirmation">
       </div>
     </fieldset>

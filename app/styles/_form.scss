@@ -188,6 +188,15 @@ fieldset {
     }
   }
 
+  .err {
+    display: inline-block;
+    padding: 4px 0;
+    font-size: 12px;
+
+    &:empty {
+      display: none;
+    }
+  }
 }
 
 .submit {

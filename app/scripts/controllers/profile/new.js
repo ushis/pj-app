@@ -3,7 +3,7 @@
 angular
   .module('pjApp')
   .controller('ProfileNewCtrl',
-    function(_, moment, $scope, $state, $window, Profile) {
+    function(_, moment, $scope, $state, $window, Profile, ValidationErrors) {
 
     $scope.user = {
       username: null,
@@ -11,6 +11,8 @@ angular
       password: null,
       passwordConfirmation: null
     };
+
+    $scope.errors = {};
 
     $scope.submit = function() {
       var data = _.extend({
@@ -23,9 +25,9 @@ angular
           $state.go('app.signin');
         })
         .catch(function(err) {
-          // TODO: display errors
           $scope.user.password = null;
           $scope.user.passwordConfirmation = null;
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });
