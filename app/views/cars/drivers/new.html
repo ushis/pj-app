@@ -18,6 +18,7 @@
       <h3>Select A New Driver</h3>
 
       <div class="input select">
+        <span class="err" ng-bind="errors.userId"></span>
         <ui-select ng-model="driver.user" reset-search-input="false">
           <ui-select-match placeholder="Enter A Username">
             {{ $select.selected.username }}

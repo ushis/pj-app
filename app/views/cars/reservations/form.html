@@ -7,10 +7,12 @@
     <h3>Dates</h3>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.startsAt"></span>
       <datepicker ng-model="tmpReservation.startsAt" placeholder="When Will You Start?"></datepicker>
     </div>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.endsAt"></span>
       <datepicker ng-model="tmpReservation.endsAt" placeholder="When Will You Be Back?"></datepicker>
     </div>
   </fieldset>

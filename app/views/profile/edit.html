@@ -16,10 +16,12 @@
       <h3>Contact Information</h3>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.email"></span>
         <input type="email" placeholder="Email" required ng-model="user.email">
       </div>
 
       <div class="input select">
+        <span class="err" ng-bind="errors.timeZone"></span>
         <ui-select ng-model="user.timeZone" reset-search-input="false">
           <ui-select-match placeholder="Enter your Timezone">
             {{ $select.selected }}
@@ -35,6 +37,7 @@
       </div>
 
       <div class="input string">
+        <span class="err" ng-bind="errors.passwordCurrent"></span>
         <input type="password" placeholder="Confirm With Your Current Password" ng-model="user.passwordCurrent" required>
       </div>
     </fieldset>

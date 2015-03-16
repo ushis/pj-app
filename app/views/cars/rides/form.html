@@ -7,14 +7,17 @@
     <h3>Ride Information</h3>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.distance"></span>
       <input type="text" placeholder="How Many Kilometers?" required ng-model="tmpRide.distance">
     </div>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.startedAt"></span>
       <datepicker ng-model="tmpRide.startedAt" placeholder="When did you start?"></datepicker>
     </div>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.endedAt"></span>
       <datepicker ng-model="tmpRide.endedAt" placeholder="When were you back?"></datepicker>
     </div>
   </fieldset>

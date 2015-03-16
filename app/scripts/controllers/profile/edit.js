@@ -2,11 +2,13 @@
 
 angular
   .module('pjApp')
-  .controller('ProfileEditCtrl', function(_, moment, $scope) {
+  .controller('ProfileEditCtrl', function(_, moment, $scope, ValidationErrors) {
 
     var timeZones = moment.tz.names();
 
     $scope.success = false;
+
+    $scope.errors = {};
 
     $scope.timeZones = _.range(10).map(function(i) {
       return timeZones[i];
@@ -32,11 +34,17 @@ angular
       $scope.currentUser.update($scope.user)
         .then(function() {
           $scope.success = true;
+          $scope.errors = {};
           _.extend($scope.user, $scope.currentUser.attrs);
         })
         .catch(function(err) {
           $scope.success = false;
-          console.log(err);
+
+          if (err.status === 401) {
+            $scope.errors = {passwordCurrent: 'Password was wrong'};
+          } else {
+            $scope.errors = ValidationErrors.format(err.data.details);
+          }
         })
         .finally(function() {
           _.extend($scope.user, {

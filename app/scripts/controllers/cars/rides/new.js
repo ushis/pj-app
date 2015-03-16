@@ -3,7 +3,7 @@
 angular
   .module('pjApp')
   .controller('CarsRidesNewCtrl',
-    function(_, $q, $scope, $state, Ride, RideComment) {
+    function(_, $q, $scope, $state, Ride, RideComment, ValidationErrors) {
 
     $scope.tmpRide = {
       distance: null,
@@ -15,16 +15,16 @@ angular
       comment: null
     };
 
+    $scope.errors = {};
+
     var saveRide = function() {
       var params = {
         carId: $scope.car.id
       };
 
-      var data = {
-        distance: $scope.tmpRide.distance,
-        startedAt: $scope.tmpRide.startedAt.toString(),
-        endedAt: $scope.tmpRide.endedAt.toString()
-      };
+      var data = _.mapValues($scope.tmpRide, function(val) {
+        return (val) ? val.toString() : val;
+      });
 
       return Ride.save(params, {ride: data}).$promise;
     };
@@ -52,7 +52,7 @@ angular
             });
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });

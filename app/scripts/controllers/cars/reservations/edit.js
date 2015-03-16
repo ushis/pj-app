@@ -3,9 +3,11 @@
 angular
   .module('pjApp')
   .controller('CarsReservationsEditCtrl',
-    function(_, moment, $scope, $state, Reservation) {
+    function(_, moment, $scope, $state, Reservation, ValidationErrors) {
 
     $scope.tmpReservation = _.clone($scope.reservation);
+
+    $scope.errors = {};
 
     $scope.submit = function() {
       var params = {
@@ -25,7 +27,7 @@ angular
           $state.go('app.car.reservation.comments', params);
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });

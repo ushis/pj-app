@@ -3,7 +3,8 @@
 angular
   .module('pjApp')
   .controller('CarsDriversNewCtrl',
-    function($scope, $state, users, Borrowership, Ownership, User) {
+    function($scope, $state, users, Borrowership, Ownership, User,
+             ValidationErrors) {
 
     $scope.users = users.users;
 
@@ -11,6 +12,8 @@ angular
       user: null,
       owner: false
     };
+
+    $scope.errors = {};
 
     $scope.reload = function(q) {
       User.query({orderBy: 'username', q: q}).$promise
@@ -52,7 +55,7 @@ angular
           $state.go('app.car.borrowers', params);
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });

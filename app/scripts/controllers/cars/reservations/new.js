@@ -3,7 +3,8 @@
 angular
   .module('pjApp')
   .controller('CarsReservationsNewCtrl',
-    function($q, $scope, $state, Reservation, ReservationComment) {
+    function(_, $q, $scope, $state, Reservation,
+             ReservationComment, ValidationErrors) {
 
     $scope.tmpReservation = {
       startsAt: null,
@@ -14,15 +15,16 @@ angular
       comment: null
     };
 
+    $scope.errors = {};
+
     var saveReservation = function(params) {
       var params = {
         carId: $scope.car.id
       };
 
-      var data = {
-        startsAt: $scope.tmpReservation.startsAt.toString(),
-        endsAt: $scope.tmpReservation.endsAt.toString()
-      };
+      var data = _.mapValues($scope.tmpReservation, function(val) {
+        return (val) ? val.toString() : val;
+      });
 
       return Reservation.save(params, {reservation: data}).$promise;
     };
@@ -51,7 +53,7 @@ angular
             });
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });

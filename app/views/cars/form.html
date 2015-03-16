@@ -7,6 +7,7 @@
     <h3>Settings</h3>
 
     <div class="input string">
+      <span class="err" ng-bind="errors.name"></span>
       <input type="text" placeholder="Give Your Car A Name" required ng-model="tmpCar.name">
     </div>
   </fieldset>

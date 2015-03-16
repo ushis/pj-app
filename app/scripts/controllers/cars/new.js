@@ -2,11 +2,13 @@
 
 angular
   .module('pjApp')
-  .controller('CarsNewCtrl', function($scope, $state, Car) {
+  .controller('CarsNewCtrl', function($scope, $state, Car, ValidationErrors) {
 
     $scope.tmpCar = {
       name: null
     };
+
+    $scope.errors = {};
 
     $scope.submit = function() {
       Car.save({car: $scope.tmpCar}).$promise
@@ -14,7 +16,7 @@ angular
           $state.go('app.car.location', {carId: resp.car.id});
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });

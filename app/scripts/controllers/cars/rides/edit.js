@@ -2,9 +2,12 @@
 
 angular
   .module('pjApp')
-  .controller('CarsRidesEditCtrl', function(_, moment, $scope, $state, Ride) {
+  .controller('CarsRidesEditCtrl',
+    function(_, moment, $scope, $state, Ride, ValidationErrors) {
 
     $scope.tmpRide = _.clone($scope.ride);
+
+    $scope.errors = {};
 
     $scope.submit = function() {
       var params = {
@@ -25,7 +28,7 @@ angular
           $state.go('app.car.ride.comments', params);
         })
         .catch(function(err) {
-          console.log(err);
+          $scope.errors = ValidationErrors.format(err.data.details);
         });
     };
   });
