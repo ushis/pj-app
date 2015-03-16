@@ -4,9 +4,9 @@
   <div class="nav">
     <a ui-sref="app.car.location" ui-sref-active="active">Location</a>
     <a ui-sref="app.car.comments" ui-sref-active="active">Discussion</a>
-    <a ui-sref="app.car.reservations" ui-sref-active="active">Reservations</a>
-    <a ui-sref="app.car.rides" ui-sref-active="active">Rides</a>
-    <a ui-sref="app.car.owners" ui-sref-active="active" ng-if="car.currentUser.owner">Drivers</a>
+    <a ui-sref="app.car.reservations" ng-class="{active: isActiveState('reservations')}">Reservations</a>
+    <a ui-sref="app.car.rides" ng-class="{active: isActiveState('rides')}">Rides</a>
+    <a ui-sref="app.car.owners" ng-class="{active: isActiveState('drivers')}" ng-if="car.currentUser.owner">Drivers</a>
     <a ui-sref="app.car.edit" ui-sref-active="active" ng-if="car.currentUser.owner">Edit</a>
     <a ui-sref="app.car.delete" ui-sref-active="active" ng-if="car.currentUser.owner">Delete</a>
   </div>
