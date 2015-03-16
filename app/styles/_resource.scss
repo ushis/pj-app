@@ -127,7 +127,8 @@ a.resource-box {
 }
 
 .empty,
-.success {
+.success,
+.error {
   margin-bottom: 20px;
   padding: 16px 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -140,4 +141,22 @@ a.resource-box {
 
 .success {
   padding: 10px;
+}
+
+.error {
+  padding: 10px 20px;
+
+  .icon {
+    float: left;
+    width: 35px;
+    text-align: center;
+
+    .octicon {
+      margin: 0;
+    }
+  }
+
+  .msg {
+    margin-left: 55px;
+  }
 }

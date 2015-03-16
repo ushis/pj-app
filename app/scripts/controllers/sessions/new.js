@@ -10,6 +10,8 @@ angular
       password: null
     };
 
+    $scope.error = false;
+
     /* */
     $scope.submit = function() {
       $scope.currentUser.signIn($scope.user.username, $scope.user.password)
@@ -19,6 +21,7 @@ angular
         })
         .catch(function() {
           $scope.user.password = null;
+          $scope.error = true;
         });
     };
   });

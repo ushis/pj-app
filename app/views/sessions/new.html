@@ -7,6 +7,16 @@
   </div>
 </div>
 
+<div class="error clearfix" ng-if="error">
+  <div class="icon">
+    <i class="octicon octicon-alert"></i>
+  </div>
+
+  <div class="msg">
+    Wrong username or password
+  </div>
+</div>
+
 <div class="signin-form">
   <form ng-submit="submit()">
     <fieldset>
