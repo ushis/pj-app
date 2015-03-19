@@ -20,6 +20,12 @@
       <i class="octicon octicon-megaphone"></i>
     </div>
 
+    <div class="action" ng-if="isEditable(comment)">
+      <a ng-confirm="delete(comment)">
+        <i class="octicon octicon-trashcan"></i>
+      </a>
+    </div>
+
     <div class="heading">
       <h3>
         <span ng-bind="comment.user.username"></span>

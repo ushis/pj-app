@@ -3,13 +3,31 @@
 angular
   .module('pjApp')
   .controller('CarsRidesCommentsIndexCtrl',
-    function($scope, comments, RideComment) {
+    function($scope, moment, comments, RideComment) {
 
     $scope.comments = comments.comments;
 
     $scope.meta = comments.meta;
 
     $scope.comment = {comment: null};
+
+    $scope.isEditable = function(comment) {
+      return $scope.currentUser.is(comment.user) &&
+        moment().subtract(9, 'minutes').isBefore(moment(comment.createdAt));
+    };
+
+    $scope.delete = function(comment) {
+      var params = {
+        carId: $scope.car.id,
+        rideId: $scope.ride.id,
+        commentId: comment.id
+      };
+
+      RideComment.delete(params).$promise
+        .finally(function() {
+          $scope.reload();
+        });
+    };
 
     $scope.submit = function() {
       var params = {

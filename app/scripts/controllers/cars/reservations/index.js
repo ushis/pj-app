@@ -3,7 +3,7 @@
 angular
   .module('pjApp')
   .controller('CarsReservationsIndexCtrl',
-    function(moment, $scope, $state, reservations, Reservation) {
+    function(moment, $scope, $state, Reservation) {
 
     $scope.items = [];
 
@@ -42,6 +42,4 @@ angular
           console.log(err);
         });
     };
-
-    $scope.buildItems(reservations.reservations);
   });
