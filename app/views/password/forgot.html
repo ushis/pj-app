@@ -1,0 +1,36 @@
+<div class="heading clearfix">
+  <h1>Password Reset</h1>
+
+  <div class="nav">
+    <a ui-sref="app.signin">Cancel</a>
+  </div>
+</div>
+
+<div class="success" ng-if="success">
+  <i class="octicon octicon-check"></i>
+  We have sent you an email with further instructions.
+</div>
+
+<div>
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="icon">
+        <i class="octicon octicon-lock"></i>
+      </div>
+
+      <div class="heading">
+        <h3>Your ID please</h3>
+      </div>
+
+      <div class="input string">
+        <span class="err" ng-bind="errors.username"></span>
+        <input type="text" placeholder="Email Or Username" required ng-model="user.username">
+      </div>
+    </fieldset>
+
+    <div class="submit">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a ui-sref="app.signin">Remember again?</a>
+    </div>
+  </form>
+</div>

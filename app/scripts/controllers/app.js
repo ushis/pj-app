@@ -6,7 +6,12 @@ angular
 
     $scope.currentUser = currentUser;
 
-    var isOutside = _.any(['app.signin', 'app.signup'], $state.includes, $state);
+    var isOutside = _.any([
+      'app.signin',
+      'app.signup',
+      'app.password-forgot',
+      'app.password-reset'
+    ], $state.includes, $state);
 
     if (!$scope.currentUser.isSignedIn() && !isOutside) {
       $state.go('app.signin');

@@ -137,6 +137,14 @@ a.resource-box {
   .octicon {
     margin-right: 6px;
   }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .success {
