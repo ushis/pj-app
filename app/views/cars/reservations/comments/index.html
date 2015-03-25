@@ -15,30 +15,12 @@
 </div>
 
 <div>
-  <div ng-repeat="comment in comments" class="resource-box comment">
-    <div class="icon">
-      <i class="octicon octicon-megaphone"></i>
-    </div>
-
-    <div class="action" ng-if="isEditable(comment)">
-      <a ng-confirm="delete(comment)">
-        <i class="octicon octicon-trashcan"></i>
-      </a>
-    </div>
-
-    <div class="heading">
-      <h3>
-        <span ng-bind="comment.user.username"></span>
-
-        <span class="created-at">
-          said
-          <span ng-bind="comment.createdAt | timeAgo"></span>
-        </span>
-      </h3>
-    </div>
-
-    <div class="markdown" ng-bind-html="comment.comment | markdown"></div>
-  </div>
+  <comment
+    ng-repeat="comment in comments"
+    comment="comment"
+    update="update($comment)"
+    delete="delete($comment)">
+  </comment>
 </div>
 
 <div class="clearfix">

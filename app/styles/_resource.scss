@@ -45,6 +45,16 @@
     width: 124px;
     float: right;
     text-align: right;
+
+    a {
+      margin-left: 4px;
+
+      &:hover {
+        .octicon {
+          color: #000;
+        }
+      }
+    }
   }
 
   .info {
@@ -78,7 +88,7 @@
   }
 
   .markdown {
-    margin: 0 124px 0 55px;
+    margin: 10px 124px 0 55px;
 
     > * {
       &:last-child {
@@ -115,6 +125,22 @@
       .created-at {
         margin-left: 4px;
         font-weight: 500;
+      }
+    }
+
+    .form {
+      margin: 0 0 0 55px;
+
+      form {
+        margin-bottom: 0;
+
+        .submit {
+          margin-bottom: 0;
+
+          a {
+            font-size: 11px;
+          }
+        }
       }
     }
   }
