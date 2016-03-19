@@ -38,7 +38,8 @@
 
               <td
                 ng-repeat="item in group.items track by $index"
-                ng-attr-colspan="{{item === null ? 1 : week.daysBetween(item.startsAt, item.endsAt).length}}">
+                ng-attr-colspan="{{item === null ? 1 : week.daysBetween(item.startsAt, item.endsAt).length}}"
+                ng-class="{comes: item !== null && !week.contains(item.startsAt), goes: item !== null && !week.contains(item.endsAt)}">
 
                 <a
                   ng-click="onItemClick(item)"
