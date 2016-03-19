@@ -36,11 +36,15 @@
             <tr ng-repeat="group in week.groups">
               <td ng-repeat="_ in week.daysBefore(group.first().startsAt)"></td>
 
-              <td ng-repeat="item in group.items" ng-attr-colspan="{{week.daysBetween(item.startsAt, item.endsAt).length}}">
+              <td
+                ng-repeat="item in group.items track by $index"
+                ng-attr-colspan="{{item === null ? 1 : week.daysBetween(item.startsAt, item.endsAt).length}}">
+
                 <a
                   ng-click="onItemClick(item)"
                   ng-attr-title="{{itemTitle(item)}}"
-                  ng-bind="item.title">
+                  ng-bind="item.title"
+                  ng-if="item !== null">
                 </a>
               </td>
 

@@ -4,34 +4,12 @@ angular
   .module('pjApp')
   .directive('calendar', function(_, moment) {
 
-    var Group = function(items) {
-      this.items = [];
-
-      if (!_.isUndefined(items)) {
-        this.add(items);
-      }
+    var Group = function() {
+      this.items = _.toArray(arguments);
     };
 
-    Group.prototype.add = function(items) {
-      if (_.isArray(items)) {
-        this.items = this.items.concat(items);
-      } else {
-        this.items.push(items);
-      }
-
-      this.items.sort(function(a, b) {
-        return a.startsAt.diff(b.startsAt);
-      });
-    };
-
-    Group.prototype.conflicts = function(item) {
-      var start = item.startsAt.clone().startOf('day');
-      var end = item.endsAt.clone().endOf('day');
-
-      return !this.items.every(function(i) {
-        return i.endsAt.clone().endOf('day').isBefore(start) ||
-          i.startsAt.clone().startOf('day').isAfter(end);
-      });
+    Group.prototype.push = function(item) {
+      this.items.push(item);
     };
 
     Group.prototype.first = function() {
@@ -90,23 +68,26 @@ angular
 
       items
         .sort(function(a, b) {
-          var aStart = a.startsAt.clone().startOf('day');
-          var aEnd = a.endsAt.clone().endOf('day');
-          var bStart = b.startsAt.clone().startOf('day');
-          var bEnd = b.endsAt.clone().endOf('day');
-          return bEnd.diff(bStart) - aEnd.diff(aStart);
+          return a.startsAt.diff(b.startsAt);
         })
         .forEach(function(item) {
           var group = groups.find(function(g) {
-            return !g.conflicts(item);
+            return g.last().endsAt.clone().endOf('day').isBefore(item.startsAt);
           });
 
           if (_.isUndefined(group)) {
             groups.push(new Group(item));
           } else {
-            group.add(item);
+            var end = group.last().endsAt.clone().endOf('day');
+            var start = item.startsAt.clone().startOf('day');
+            var gap = moment.duration(start.diff(end)).days();
+
+            for (var i = 0; i < gap; i++) {
+              group.push(null);
+            }
+            group.push(item);
           }
-        });
+        }, this);
 
       this.groups = groups;
     };

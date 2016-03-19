@@ -28,7 +28,6 @@ angular
       } catch (err) {
         return null;
       }
-
       return (Date.now() > claims.exp * 1e3) ? null : token;
     };
 
