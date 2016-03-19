@@ -33,10 +33,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in itemsInWeek(week)">
-              <td ng-repeat="_ in week.daysBefore(item.startsAt)"></td>
+            <tr ng-repeat="group in week.groups">
+              <td ng-repeat="_ in week.daysBefore(group.first().startsAt)"></td>
 
-              <td ng-attr-colspan="{{week.daysBetween(item.startsAt, item.endsAt).length}}">
+              <td ng-repeat="item in group.items" ng-attr-colspan="{{week.daysBetween(item.startsAt, item.endsAt).length}}">
                 <a
                   ng-click="onItemClick(item)"
                   ng-attr-title="{{itemTitle(item)}}"
@@ -44,7 +44,7 @@
                 </a>
               </td>
 
-              <td ng-repeat="_ in week.daysAfter(item.endsAt)"></td>
+              <td ng-repeat="_ in week.daysAfter(group.last().endsAt)"></td>
             </tr>
           </tbody>
         </table>
