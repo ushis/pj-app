@@ -2,13 +2,34 @@
 
 angular
   .module('pjApp')
-  .config(function($stateProvider) {
+  .config(function($stateProvider, moment) {
 
     $stateProvider
       .state('app.car.reservations', {
-        url: '/reservations',
+        url: '/reservations/{date:[0-9]{4}-[0-9]{2}}',
         templateUrl: 'views/cars/reservations/index.html',
-        controller: 'CarsReservationsIndexCtrl'
+        controller: 'CarsReservationsIndexCtrl',
+        params: {
+          date: {
+            value: function() {
+              return moment().format('YYYY-MM');
+            }
+          }
+        },
+        resolve: {
+          date: function($stateParams) {
+            return moment($stateParams.date).startOf('month');
+          },
+          reservations: function(Reservation, $stateParams, date) {
+            return Reservation.query({
+              carId: $stateParams.carId,
+              after: date.format(),
+              before: date.clone().endOf('month').format(),
+              orderBy: 'starts_at',
+              perPage: 100
+            }).$promise;
+          }
+        }
       })
       .state('app.car.reservation-new', {
         url: '/reservations/new',
@@ -16,7 +37,7 @@ angular
         controller: 'CarsReservationsNewCtrl'
       })
       .state('app.car.reservation', {
-        url: '/reservations/:reservationId',
+        url: '/reservations/{reservationId:int}',
         abstract: true,
         templateUrl: 'views/cars/reservations/show.html',
         controller: 'CarsReservationsShowCtrl',

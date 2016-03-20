@@ -6,6 +6,18 @@
   </div>
 </div>
 
-<div>
-  <calendar items="items" change="reload($date)" click="goTo($item)"></calendar>
+<div class="calendar">
+  <div class="title clearfix">
+    <a ui-sref="app.car.reservations({date: date.clone().subtract(1, 'month').format('YYYY-MM')})">
+      <span class="octicon octicon-chevron-left"></span>
+    </a>
+
+    <span class="date" ng-bind="date.format('MMM YYYY')"></span>
+
+    <a ui-sref="app.car.reservations({date: date.clone().add(1, 'month').format('YYYY-MM')})">
+      <span class="octicon octicon-chevron-right"></span>
+    </a>
+  </div>
+
+  <calendar date="date" items="items" click="goTo($item)"></calendar>
 </div>

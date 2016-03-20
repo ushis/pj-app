@@ -80,7 +80,7 @@ angular
           } else {
             var end = group.last().endsAt.clone().endOf('day');
             var start = item.startsAt.clone().startOf('day');
-            var gap = moment.duration(start.diff(end)).days();
+            var gap = start.diff(end, 'days');
 
             for (var i = 0; i < gap; i++) {
               group.push(null);
@@ -92,69 +92,46 @@ angular
       this.groups = groups;
     };
 
-    var Calendar = function(date, updateCallback) {
-      this.moment = moment(date).startOf('month');
-      this.updateCallback = updateCallback;
+    var Calendar = function(date, items) {
+      this.date = date.clone().startOf('month');
+
+      var start = this.date.clone().startOf('week');
+      var diff = this.date.diff(start, 'days');
+      var n = (this.date.daysInMonth() + diff) / 7;
+
+      this.weeks = _.range(n).map(function(week) {
+        var week = new Week(start.clone().add(week, 'weeks'));
+
+        week.setItems(items.filter(function(item) {
+          return week.contains(item.startsAt, item.endsAt);
+        }));
+
+        return week;
+      });
 
       this.weekDays = _.range(7).map(function(i) {
         return moment().startOf('week').add(i, 'day');
       });
-
-      this.update();
     };
 
-    Calendar.prototype.prevMonth = function() {
-      this.moment.subtract(1, 'month');
-      this.update();
-    };
-
-    Calendar.prototype.nextMonth = function() {
-      this.moment.add(1, 'month');
-      this.update();
-    };
-
-    Calendar.prototype.update = function() {
-      var start = this.moment.clone().startOf('week');
-      var diff = this.moment.diff(start, 'days');
-      var n = (this.moment.daysInMonth() + diff) / 7;
-
-      this.weeks = _.range(n).map(function(week) {
-        return new Week(start.clone().add(week, 'weeks'));
-      });
-
-      this.updateCallback({$date: this.moment.clone()});
-    };
-
-    Calendar.prototype.inMonth = function(moment) {
-      return moment.month() === this.moment.month();
+    Calendar.prototype.inMonth = function(date) {
+      return date.month() === this.date.month();
     };
 
     Calendar.prototype.isToday = function(day) {
       return moment().startOf('day').isSame(day);
     };
 
-    Calendar.prototype.setItems = function(items) {
-      this.weeks.forEach(function(week) {
-        week.setItems(items.filter(function(item) {
-          return week.contains(item.startsAt, item.endsAt);
-        }));
-      });
-    };
-
     return {
       restrict: 'E',
       scope: {
+        date: '=',
         items: '=',
-        change: '&',
         click: '&'
       },
       templateUrl: 'views/directives/calendar.html',
       link: function(scope) {
-        scope.calendar = new Calendar(new Date(), scope.change);
-
-        scope.$watch('items', function(items) {
-          scope.calendar.setItems(items);
-        });
+        scope.calendar = new Calendar(scope.date, scope.items);
 
         scope.onItemClick = function(item) {
           scope.click({$item: item});
