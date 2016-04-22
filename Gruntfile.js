@@ -399,6 +399,23 @@ module.exports = function (grunt) {
       }
     },
 
+    compress: {
+      main: {
+        options: {
+          mode: 'gzip'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>',
+          src: ['**/*'],
+          dest: '<%= yeoman.dist %>',
+          rename: function(dest, src) {
+            return dest + '/' + src + '.gz';
+          }
+        }]
+      }
+    },
+
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
@@ -451,7 +468,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'compress'
   ]);
 
   grunt.registerTask('default', [
