@@ -100,7 +100,7 @@ angular
       var n = (this.date.daysInMonth() + diff) / 7;
 
       this.weeks = _.range(n).map(function(week) {
-        var week = new Week(start.clone().add(week, 'weeks'));
+        week = new Week(start.clone().add(week, 'weeks'));
 
         week.setItems(items.filter(function(item) {
           return week.contains(item.startsAt, item.endsAt);
