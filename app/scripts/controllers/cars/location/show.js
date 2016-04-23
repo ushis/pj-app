@@ -67,6 +67,10 @@ angular
         longitude: $scope.marker.coords.longitude
       };
 
+      if ($scope.pending) {
+        return;
+      }
+
       Location.save(params, {location: data}).$promise
         .then(function(resp) {
           $scope.location = resp.location;

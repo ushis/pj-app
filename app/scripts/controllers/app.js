@@ -2,9 +2,11 @@
 
 angular
   .module('pjApp')
-  .controller('AppCtrl', function(_, $scope, $state, currentUser) {
+  .controller('AppCtrl', function(_, $scope, $state, $http, currentUser) {
 
     $scope.currentUser = currentUser;
+
+    $scope.pending = false;
 
     var isOutside = _.any([
       'app.signin',
@@ -25,4 +27,10 @@ angular
       $scope.currentUser.signOut();
       $state.go('app.signin');
     };
+
+    $scope.$watch(function() {
+      return $http.pendingRequests.length > 0;
+    }, function() {
+      $scope.pending = $http.pendingRequests.length > 0;
+    });
   });

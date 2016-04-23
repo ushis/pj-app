@@ -7,6 +7,10 @@ angular
     $scope.ride = ride.ride;
 
     $scope.delete = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       Ride.delete({carId: $scope.car.id, rideId: $scope.ride.id}).$promise
         .then(function() {
           $scope.reloadCar();

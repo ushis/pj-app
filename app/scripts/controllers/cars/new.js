@@ -11,6 +11,10 @@ angular
     $scope.errors = {};
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       Car.save({car: $scope.tmpCar}).$promise
         .then(function(resp) {
           $state.go('app.car.location', {carId: resp.car.id});

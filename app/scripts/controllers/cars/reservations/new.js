@@ -42,6 +42,10 @@ angular
     };
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       saveReservation()
         .then(function(resp) {
           saveComment(resp.reservation.id)

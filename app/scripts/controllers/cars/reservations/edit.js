@@ -20,6 +20,10 @@ angular
         endsAt: $scope.tmpReservation.endsAt.toString()
       };
 
+      if ($scope.pending) {
+        return;
+      }
+
       Reservation.update(params, {reservation: data}).$promise
         .then(function(resp) {
           _.extend($scope.reservation, resp.reservation);

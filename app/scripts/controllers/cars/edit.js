@@ -7,6 +7,10 @@ angular
     $scope.tmpCar = _.clone($scope.car);
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       Car.update({carId: $scope.car.id}, {car: $scope.tmpCar}).$promise
         .then(function(resp) {
           _.extend($scope.car, resp.car);

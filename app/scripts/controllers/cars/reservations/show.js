@@ -27,6 +27,10 @@ angular
         reservationId: $scope.reservation.id
       };
 
+      if ($scope.pending) {
+        return;
+      }
+
       Reservation.delete(params).$promise
         .then(function() {
           $scope.reloadCar();

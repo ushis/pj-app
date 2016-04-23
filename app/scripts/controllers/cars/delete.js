@@ -7,6 +7,10 @@ angular
     $scope.carName = null;
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       if ($scope.car.name !== $scope.carName) {
         return;
       }

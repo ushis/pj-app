@@ -20,11 +20,14 @@
       <div class="input select">
         <span class="err" ng-bind="errors.userId"></span>
         <ui-select ng-model="driver.user" reset-search-input="false">
-          <ui-select-match placeholder="Enter A Username">
+          <ui-select-match
+            class="ui-select-match"
+            placeholder="Enter A Username">
             {{ $select.selected.username }}
           </ui-select-match>
 
           <ui-select-choices
+            class="ui-select-choices"
             repeat="user in users track by $index"
             refresh="reload($select.search)"
             refresh-delay="200">

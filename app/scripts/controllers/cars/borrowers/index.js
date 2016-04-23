@@ -24,6 +24,10 @@ angular
     };
 
     $scope.delete = function(borrowership) {
+      if ($scope.pending) {
+        return;
+      }
+
       var params = {
         carId: $scope.car.id,
         borrowershipId: borrowership.id

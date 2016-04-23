@@ -23,11 +23,12 @@
       <div class="input select">
         <span class="err" ng-bind="errors.timeZone"></span>
         <ui-select ng-model="user.timeZone" reset-search-input="false">
-          <ui-select-match placeholder="Enter your Timezone">
+          <ui-select-match class="ui-select-match" placeholder="Enter your Timezone">
             {{ $select.selected }}
           </ui-select-match>
 
           <ui-select-choices
+            class="ui-select-choices"
             repeat="zone in timeZones track by $index"
             refresh="filterZones($select.search)"
             refresh-delay="200">
@@ -38,7 +39,11 @@
 
       <div class="input string">
         <span class="err" ng-bind="errors.passwordCurrent"></span>
-        <input type="password" placeholder="Confirm With Your Current Password" ng-model="user.passwordCurrent" required>
+        <input
+          type="password"
+          placeholder="Confirm With Your Current Password"
+          ng-model="user.passwordCurrent"
+          required>
       </div>
     </fieldset>
 

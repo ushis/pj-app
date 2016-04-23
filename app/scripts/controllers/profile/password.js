@@ -15,6 +15,10 @@ angular
     };
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       $scope.currentUser.update($scope.user)
         .then(function() {
           $scope.success = true;

@@ -8,7 +8,7 @@
   <form ng-submit="submit()">
     <textarea placeholder="Say Something..." msd-elastic ng-model="comment.comment"></textarea>
 
-    <div class="submit" ng-show="comment.comment">
+    <div class="submit" ng-show="comment.comment" ng-class="{pending: pending}">
       <button type="submit" class="btn btn-secondary">Submit</button>
     </div>
   </form>

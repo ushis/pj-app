@@ -23,7 +23,7 @@ angular
     };
 
     $scope.submit = function() {
-      if (!$scope.driver.user) {
+      if (!$scope.driver.user || $scope.pending) {
         return;
       }
 

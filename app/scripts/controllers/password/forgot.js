@@ -13,6 +13,10 @@ angular
     $scope.success = false;
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       PasswordReset.save({user: $scope.user}).$promise
         .then(function() {
           $scope.success = true;

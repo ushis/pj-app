@@ -15,6 +15,9 @@ angular
     $scope.unauthorizedError = false;
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
       AccessToken.set(token);
 
       PasswordReset.update({user: $scope.user}).$promise

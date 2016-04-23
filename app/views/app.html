@@ -1,4 +1,4 @@
-<div id="header" class="clearfix">
+<div id="header" class="clearfix" ng-class="{pending: pending}">
   <div class="icon">
     <i class="octicon octicon-radio-tower"></i>
   </div>
@@ -17,6 +17,8 @@
       <a ui-sref="app.signin">Sign In</a>
     </div>
   </div>
+
+  <div class="loader"></div>
 </div>
 
 <div id="content" ui-view></div>

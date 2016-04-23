@@ -21,6 +21,10 @@ angular
         endedAt: $scope.tmpRide.endedAt.toString()
       };
 
+      if ($scope.pending) {
+        return;
+      }
+
       Ride.update(params, {ride: data}).$promise
         .then(function(resp) {
           _.extend($scope.ride, resp.ride);

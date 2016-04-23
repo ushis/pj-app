@@ -16,8 +16,12 @@ angular
 
     $scope.submit = function() {
       var data = _.extend({
-        timeZone: moment().utcOffset() * 60
+        timeZone: moment.tz.guess()
       }, $scope.user);
+
+      if ($scope.pending) {
+        return;
+      }
 
       Profile.save({user: data}).$promise
         .then(function(resp) {

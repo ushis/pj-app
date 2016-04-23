@@ -42,6 +42,10 @@ angular
     };
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       saveRide()
         .then(function(resp) {
           $scope.reloadCar();

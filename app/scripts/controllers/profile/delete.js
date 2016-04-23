@@ -9,6 +9,10 @@ angular
     };
 
     $scope.submit = function() {
+      if ($scope.pending) {
+        return;
+      }
+
       $scope.currentUser.delete($scope.user.passwordCurrent)
         .then(function() {
           $state.go('app.signin');

@@ -20,6 +20,10 @@ angular
         commentId: comment.id
       };
 
+      if ($scope.pending) {
+        return $q.reject();
+      }
+
       ReservationComment.update(params, {comment: comment}).$promise
         .then(function(resp) {
           deferred.resolve(resp.comment);
@@ -38,6 +42,10 @@ angular
         commentId: comment.id
       };
 
+      if ($scope.pending) {
+        return;
+      }
+
       ReservationComment.delete(params).$promise
         .finally(function() {
           $scope.reload();
@@ -51,6 +59,10 @@ angular
       };
 
       var data = $scope.comment;
+
+      if ($scope.pending) {
+        return;
+      }
 
       ReservationComment.save(params, {comment: data}).$promise
         .then(function(resp) {
@@ -78,4 +90,4 @@ angular
           console.log(err);
         });
     };
-    });
+  });
