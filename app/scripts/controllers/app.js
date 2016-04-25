@@ -8,7 +8,7 @@ angular
 
     $scope.pending = false;
 
-    var isOutside = _.any([
+    var isOutside = _.some([
       'app.signin',
       'app.signup',
       'app.password-forgot',
