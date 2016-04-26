@@ -6,7 +6,7 @@ angular
     return {
       format: function(errors) {
         return _.mapValues(errors, function(errs, attr) {
-          return [str.humanize(attr), errs[0]].join(' ');
+          return errs[0];
         });
       }
     };

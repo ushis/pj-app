@@ -190,8 +190,11 @@ fieldset {
 
   .err {
     display: inline-block;
-    padding: 4px 0;
+    padding: 1px 10px;
+    margin-bottom: 4px;
     font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 3px;
 
     &:empty {
       display: none;
