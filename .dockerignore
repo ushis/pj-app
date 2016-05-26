@@ -1,3 +1,4 @@
-# ignore everything except the dist folder
+# ignore everything except nginx.conf and the dist folder
 *
+!nginx.conf
 !dist
