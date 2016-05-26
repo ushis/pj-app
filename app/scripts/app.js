@@ -27,7 +27,7 @@ angular
 
     /* Configure Google Maps SDK */
     uiGmapGoogleMapApiProvider.configure({
-      v: '3.18'
+      v: '3.20'
     });
   })
   .run(function($rootScope, $state) {
