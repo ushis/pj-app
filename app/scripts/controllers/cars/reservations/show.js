@@ -3,7 +3,7 @@
 angular
   .module('pjApp')
   .controller('CarsReservationsShowCtrl',
-    function(moment, $scope, $state, reservation, Reservation) {
+    function(moment, $scope, $state, reservation, Reservation, Cancelation) {
 
     $scope.reservation = reservation.reservation;
 
@@ -50,6 +50,33 @@ angular
       Reservation.get(params).$promise
         .then(function(resp) {
           $scope.reservation = resp.reservation;
+        });
+    };
+
+    $scope.cancel = function() {
+      var params = {
+        carId: $scope.car.id,
+        reservationId: $scope.reservation.id
+      };
+
+      Cancelation.save(params, {}).$promise
+        .then(function(cancelation) {
+          $scope.reservation.cancelation = cancelation.cancelation;
+        });
+    };
+
+    $scope.uncancel = function() {
+      var params = {
+        carId: $scope.car.id,
+        reservationId: $scope.reservation.id
+      };
+
+      Cancelation.delete(params).$promise
+        .then(function() {
+          $scope.reservation.cancelation = null;
+        })
+        .catch(function() {
+          $scope.reloadReservation();
         });
     };
   });

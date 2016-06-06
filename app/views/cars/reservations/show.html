@@ -4,6 +4,8 @@
   <div class="nav" ng-if="car.currentUser.owner || currentUser.is(reservation.user)">
     <a ui-sref="app.car.reservation.comments" ui-sref-active="active">Discussion</a>
     <a ui-sref="app.car.reservation.edit" ui-sref-active="active">Edit</a>
+    <a ng-click="cancel()" ng-if="!reservation.cancelation">Cancel</a>
+    <a ng-click="uncancel()" ng-if="reservation.cancelation">Uncancel</a>
     <a ng-confirm="delete()" ng-confirm-message="Do You Really Want To Delete This Reservation?">Delete</a>
   </div>
 </div>
@@ -14,13 +16,18 @@
   </div>
 
   <div class="heading">
-    <h3 ng-bind="title()"></h3>
+    <h3 ng-bind="title()" ng-class="{cancelled: reservation.cancelation}"></h3>
   </div>
 
   <div class="info">
-    <span>
+    <span ng-if="!reservation.cancelation">
       Added <span ng-bind="reservation.createdAt | timeAgo"></span>
       by <span ng-bind="reservation.user.username"></span>
+    </span>
+
+    <span ng-if="reservation.cancelation">
+      Cancelled <span ng-bind="reservation.cancelation.createdAt | timeAgo"></span>
+      by <span ng-bind="reservation.cancelation.user.username"></span>
     </span>
 
     <span ng-if="reservation.commentsCount > 0">

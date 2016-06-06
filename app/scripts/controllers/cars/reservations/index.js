@@ -11,6 +11,7 @@ angular
       return {
         id: reservation.id,
         title: reservation.user.username,
+        cancelled: !!reservation.cancelation,
         startsAt: moment(reservation.startsAt),
         endsAt: moment(reservation.endsAt)
       };

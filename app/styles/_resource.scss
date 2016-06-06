@@ -38,6 +38,10 @@
         color: #111;
         text-decoration: underline;
       }
+
+      &.cancelled {
+        text-decoration: line-through;
+      }
     }
   }
 

@@ -89,6 +89,14 @@
           border-bottom-right-radius: 0;
         }
       }
+
+      &.cancelled {
+        a {
+          text-decoration: line-through;
+          color: rgba(51, 51, 51, 0.9);
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+      }
     }
 
     th {
