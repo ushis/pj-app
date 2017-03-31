@@ -1,0 +1,45 @@
+---
+sudo: false
+
+language: node_js
+
+node_js:
+  - 7.7
+
+rvm:
+  - 2.3
+
+services:
+  - docker
+
+before_install:
+  - gem install compass
+  - npm install -g grunt-cli bower
+
+install:
+  - npm install
+  - bower install
+
+script:
+  - grunt build
+  - docker build -t pj-app .
+
+before_deploy:
+  - if test -n "${TRAVIS_TAG}"; then
+      docker tag pj-app "ushi/pj-app:${TRAVIS_TAG}";
+    else
+      docker tag pj-app "ushi/pj-app:latest";
+    fi
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: docker push "ushi/pj-api:${TRAVIS_TAG}"
+    on:
+      tags: true
+  - provider: script
+    skip_cleanup: true
+    script: docker push "ushi/pj-api:latest"
+    on:
+      branch: master
