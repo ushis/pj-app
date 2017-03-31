@@ -32,11 +32,12 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: docker push "ushi/pj-api:${TRAVIS_TAG}"
+    script: docker push "ushi/pj-app:${TRAVIS_TAG}"
     on:
       tags: true
+
   - provider: script
     skip_cleanup: true
-    script: docker push "ushi/pj-api:latest"
+    script: docker push "ushi/pj-app:latest"
     on:
       branch: master
