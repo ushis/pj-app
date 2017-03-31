@@ -6,9 +6,6 @@ language: node_js
 node_js:
   - 7.7
 
-rvm:
-  - 2.3
-
 services:
   - docker
 
