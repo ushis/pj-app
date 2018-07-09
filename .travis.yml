@@ -1,13 +1,9 @@
----
 sudo: false
 
 language: node_js
 
 node_js:
   - 7.7
-
-services:
-  - docker
 
 before_install:
   - gem install compass
@@ -19,25 +15,17 @@ install:
 
 script:
   - grunt build
-  - docker build -t pj-app .
 
 before_deploy:
-  - if test -n "${TRAVIS_TAG}"; then
-      docker tag pj-app "ushi/pj-app:${TRAVIS_TAG}";
-    else
-      docker tag pj-app "ushi/pj-app:latest";
-    fi
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - mv dist "pj-app-${TRAVIS_TAG}"
+  - tar -caf "pj-app-${TRAVIS_TAG}.tar.xz" "pj-app-${TRAVIS_TAG}"
 
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: docker push "ushi/pj-app:${TRAVIS_TAG}"
-    on:
-      tags: true
-
-  - provider: script
-    skip_cleanup: true
-    script: docker push "ushi/pj-app:latest"
-    on:
-      branch: master
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: e92CqIzgCjJV4Vfa7TD98caqEsScg0mcJSPn5zUsr261yEUeIhpJLJHjza32JICw0AVXc1HAhqO9HucUIREFcEvI3whSMx4xkaV52X4QKh1KC0E980TS2sLbNCQqjGxT6rJe+l6NggPKQuteasTdJ/f2k7D6RtK2SUlDl2HFcC0=
+  file: "pj-app-${TRAVIS_TAG}.tar.xz"
+  on:
+    repo: ushis/pj-app
+    tags: true
