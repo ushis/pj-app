@@ -17,7 +17,7 @@ angular
 
       Car.save({car: $scope.tmpCar}).$promise
         .then(function(resp) {
-          $state.go('app.car.location', {carId: resp.car.id});
+          $state.go('app.car.comments', {carId: resp.car.id});
         })
         .catch(function(err) {
           $scope.errors = ValidationErrors.format(err.data.details);
