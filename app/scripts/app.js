@@ -9,7 +9,6 @@ angular
     'ui.router',
     'ui.select',
     'ui.bootstrap.datetimepicker',
-    'uiGmapgoogle-maps',
     'monospaced.elastic',
     'config'
   ])
@@ -17,18 +16,13 @@ angular
   .constant('str', window.s)
   .constant('moment', window.moment)
   .constant('markdown', window.markdown)
-  .config(function ($httpProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+  .config(function ($httpProvider, $urlRouterProvider) {
 
     /* Prepare all API calls */
     $httpProvider.interceptors.push('ApiInterceptor');
 
     /* Redirect to /login if no route matches */
     $urlRouterProvider.otherwise('/signin');
-
-    /* Configure Google Maps SDK */
-    uiGmapGoogleMapApiProvider.configure({
-      v: '3.20'
-    });
   })
   .run(function($rootScope, $state) {
 

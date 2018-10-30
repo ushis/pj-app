@@ -14,7 +14,7 @@ angular
       Car.update({carId: $scope.car.id}, {car: $scope.tmpCar}).$promise
         .then(function(resp) {
           _.extend($scope.car, resp.car);
-          $state.go('app.car.location', {carId: $scope.car.id});
+          $state.go('app.car.comments', {carId: $scope.car.id});
         })
         .catch(function(err) {
           console.log(err);
